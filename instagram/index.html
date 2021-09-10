@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const urlList = [
+            'https://www.instagram.com/p/BlqPRuNhGO8/?__a=1',
+            'https://www.instagram.com/p/BWVxYFxhcIZ/?__a=1',
+            'https://www.instagram.com/p/Bjz_idfnru4/?__a=1',
+        ];
+
+        const requestApi = urlList =>
+            Promise.all(urlList.map(url => fetch(url)))
+            .then(responses => Promise.all(responses.map(res => res.json())))
+            .then(res => res.map(elem => elem.graphql.shortcode_media.location.name));
+
+        (async urlList => {
+            const data = await requestApi(urlList);
+            // const data = ['Tanzania', 'Punta Cana', 'Strasbourg, France'];
+            const body = document.body;
+            body.append(data);
+        })(urlList);
+    </script>
+    </body>
+</html> 

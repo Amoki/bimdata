@@ -1,0 +1,17 @@
+{
+  "name": "bimdata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "insta.js",
+  "type": "module",
+  "scripts": {
+    "fetch": "node ./instagram"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+
+  "dependencies": {
+    "node-fetch": "^3.0.0"
+  }
+}
